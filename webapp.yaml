@@ -21,18 +21,18 @@ spec:
         - containerPort: 3000
         env:
         - name: USER_NAME
-          valueFrom: 
-            secretKeyRef: 
+          valueFrom:
+            secretKeyRef:
               name: mongo-secret
               key: mongo-user
         - name: USER_PWD
-          valueFrom: 
-            secretKeyRef: 
+          valueFrom:
+            secretKeyRef:
               name: mongo-secret
-              key: mongo-password
+              key: mongo-password 
         - name: DB_URL
-          valueFrom: 
-            configMapKeyRef: 
+          valueFrom:
+            configMapKeyRef:
               name: mongo-config
               key: mongo-url
 ---
@@ -43,7 +43,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    name: webapp
+    app: webapp
   ports:
     - protocol: TCP
       port: 3000

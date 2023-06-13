@@ -21,26 +21,23 @@ spec:
         - containerPort: 27017
         env:
         - name: MONGO_INITDB_ROOT_USERNAME
-          valueFrom: 
-            secretKeyRef: 
+          valueFrom:
+            secretKeyRef:
               name: mongo-secret
               key: mongo-user
         - name: MONGO_INITDB_ROOT_PASSWORD
-          valueFrom: 
-            secretKeyRef: 
+          valueFrom:
+            secretKeyRef:
               name: mongo-secret
-              key: mongo-password       
-
-
+              key: mongo-password  
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
   name: mongo-service
 spec:
   selector:
-    app.kubernetes.io/name: mongo
+    app: mongo
   ports:
     - protocol: TCP
       port: 27017
